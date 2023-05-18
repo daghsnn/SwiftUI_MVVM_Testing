@@ -1,0 +1,100 @@
+{
+    "EPWA":
+    {
+        "CITY": "WARSAW",
+        "COMMENTS": "",
+        "COUNTRY": "POLAND",
+        "ELEV": 361,
+        "ELEVATION": 361,
+        "IATA": "WAW",
+        "ICAO": "EPWA",
+        "INDEX": 63,
+        "LASTUPDATE": "20210322",
+        "LATITUDE": "052095700N",
+        "LONGITUDE": "020580200E",
+        "MAGNETICVARIATION": "050000E",
+        "NAME": "WARSAW CHOPIN",
+        "RWY":
+        {
+            "11":
+            {
+                "ALIGNMENTTYPE": "90",
+                "APPROACHSLOPE": "",
+                "ASDA": 8399,
+                "CLEARWAY": 0,
+                "COMMENTS": "",
+                "DESIGNATOR": "11",
+                "DISTANCE_UNIT": 0,
+                "ELEV": 361,
+                "ELEV_END": 345,
+                "ELEV_THR": 361,
+                "ENGFAIL": "*T/O FROM RWY HEAD* - EFP : STD. ",
+                "ENTRYANGLE": "90",
+                "EXTRAIDENT": "",
+                "FULLORINTERSECTION": 1,
+                "HDG": "110",
+                "HEIGHT_UNIT": 0,
+                "IDENT": "11",
+                "INDEX": 0,
+                "LASTUPDATE": "20210322",
+                "LDA": 8399,
+                "LDCOMMENTS": "",
+                "MAGNETICHEADING": "110",
+                "MAGNETICHEADINGDATE": "",
+                "MAXLENGTH": 0,
+                "NAME": "11",
+                "OBSTACLES":
+                [
+                    {
+                        "DISTANCE": "4900",
+                        "ELEVATION": 482,
+                        "LATERALDISTANCE": "0",
+                        "NATURE": "",
+                        "OBSTACLEDISTANCE": 8533,
+                        "OBSTACLEDISTANCE_BR": 16076,
+                        "OBSTACLEELEVATION": 137,
+                        "OBSTACLEELEVATION_BR": 121
+                    },
+                    {
+                        "DISTANCE": "6527",
+                        "ELEVATION": 541,
+                        "LATERALDISTANCE": "0",
+                        "NATURE": "",
+                        "OBSTACLEDISTANCE": 13871,
+                        "OBSTACLEDISTANCE_BR": 21414,
+                        "OBSTACLEELEVATION": 196,
+                        "OBSTACLEELEVATION_BR": 180
+                    },
+                    {
+                        "DISTANCE": "24114",
+                        "ELEVATION": 866,
+                        "LATERALDISTANCE": "0",
+                        "NATURE": "",
+                        "OBSTACLEDISTANCE": 71572,
+                        "OBSTACLEDISTANCE_BR": 79114,
+                        "OBSTACLEELEVATION": 521,
+                        "OBSTACLEELEVATION_BR": 505
+                    }
+                ],
+                "POSITION": "",
+                "RWYNO": "11",
+                "SHIFTBEGINNING": 0,
+                "SHIFTEND": 0,
+                "SHOULDER": "",
+                "SLOPE": "-0.21",
+                "STOPWAY": 856,
+                "STRENGTH": "",
+                "TAKEOFFSHIFT": 0,
+                "TEMPIDENT": "",
+                "THRESHOLDELEVATION": 361,
+                "THRESHOLDLATITUDE": "",
+                "THRESHOLDLONGITUDE": "",
+                "TOCOMMENTS": "*T/O FROM RWY HEAD* - EFP : STD. ",
+                "TODA": 7543,
+                "TORA": 7543,
+                "WIDTH": 164
+            }
+        },
+        "STATE": "POLAND"
+    }
+}

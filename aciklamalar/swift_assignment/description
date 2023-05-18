@@ -1,0 +1,20 @@
+Task Description:
+
+Create a simple iOS application that reads the given JSON data containing airport information, parses it, and displays the airport location on a map.
+
+Data is available in epwa_example_incomplete.json
+
+Requirements:
+
+1. Parse the provided JSON data containing airport information.
+2. Create a model for the Airport data.
+3. Display a map view using SwiftUI's Map component.
+4. Show a marker at the airport's location with the airport's name as the label. Make sure information is easily visible and readable on the map
+5. (Optional) Allow users to tap the marker to see more information about the airport. (e.g ICAO and IATA codes and elevation)
+
+This task is deliberately loosely described.
+
+Evaluation will be conducted on (not limited to)
+1) Error handling 
+2) Performance
+3) Code structure
