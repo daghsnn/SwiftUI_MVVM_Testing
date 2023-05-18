@@ -21,6 +21,8 @@ class MapViewModel: ObservableObject, MapViewModelProtocol {
     
     @Published var coordinate = MKCoordinateRegion.init()
     @Published var landMarks: [LandmarkModel] = []
+    @Published var span: MKCoordinateSpan = .init()
+
     @Published var isLoading = true
 
     private let bundlePath = "epwa_example_incomplete"
@@ -44,15 +46,12 @@ class MapViewModel: ObservableObject, MapViewModelProtocol {
     }
     
     func configureMap(model:ResponseModel) {
-        if let longitude = model.epwa?.longitude, let latitute = model.epwa?.latitude {
-            configureCoordinates(longitude,latitute)
+        if let longitudeString = model.epwa?.longitude, let latitudeString = model.epwa?.latitude {
+            configureCoordinates(longitudeString, latitudeString)
         }
     }
     
     func configureCoordinates(_ longitude:String, _ latitude:String) {
-        let longitudeString = longitude.suffix(1)
-        let latitudeString = latitude.suffix(1)
-        
         let longitudeTrimmedString = longitude.dropLast()
         let latitudeTrimmedString = latitude.dropLast()
 
@@ -60,11 +59,10 @@ class MapViewModel: ObservableObject, MapViewModelProtocol {
         let latitudeLeadingZeros = latitudeTrimmedString.trimmingCharacters(in: ["0"])
 
         if let longitudeValue = Float(longitudeLeadingZeros), let latituteValue = Float(latitudeLeadingZeros) {
-            var longitude = longitudeValue / 10000
-            var latitude = latituteValue / 10000
-
-            self.coordinate = .init(center: CLLocationCoordinate2DMake(Double(latitude), Double(longitude)), latitudinalMeters: 100, longitudinalMeters: 100)
-            self.landMarks = [LandmarkModel(coordinate: coordinate.center, name: "WARSAW CHOPIN", title: "EPWA")]
+            let center = CLLocationCoordinate2D(latitude: CLLocationDegrees(latituteValue / 10000), longitude: CLLocationDegrees(longitudeValue / 10000))
+            self.span = MKCoordinateSpan(latitudeDelta: 0.0164, longitudeDelta: 0.0164)
+            self.coordinate = MKCoordinateRegion(center: center, span: span)
+            self.landMarks = [LandmarkModel(coordinate: coordinate.center, name: "WARSAW CHOPIN")]
         } else {
             // Geçerli bir değer bulunamadığında hata işleme yapabilirsiniz
             print("Geçerli bir latitude değeri bulunamadı.")

@@ -6,10 +6,10 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct LandmarkModel: Identifiable {
     let id = UUID()
     let coordinate : CLLocationCoordinate2D
     var name : String
-    var title : String
 }

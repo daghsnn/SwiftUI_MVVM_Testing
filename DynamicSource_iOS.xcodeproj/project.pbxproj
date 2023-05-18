@@ -23,6 +23,7 @@
 		A927480A2A168F1600C292AD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A927480C2A168F1600C292AD /* Localizable.strings */; };
 		A927480F2A16908700C292AD /* Text+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A927480E2A16908700C292AD /* Text+Extension.swift */; };
 		A92748142A16A36C00C292AD /* LandMarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92748132A16A36C00C292AD /* LandMarkModel.swift */; };
+		A96CB2962A16CB5800488CDA /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96CB2952A16CB5800488CDA /* AnnotationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		A927480D2A168F1800C292AD /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A927480E2A16908700C292AD /* Text+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Extension.swift"; sourceTree = "<group>"; };
 		A92748132A16A36C00C292AD /* LandMarkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandMarkModel.swift; sourceTree = "<group>"; };
+		A96CB2952A16CB5800488CDA /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,12 +116,15 @@
 		671082122A13A5CB00663B32 /* DynamicSource_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				671082192A13A5CE00663B32 /* DynamicSource_iOS.entitlements */,
+				671082172A13A5CE00663B32 /* Assets.xcassets */,
+				6710821A2A13A5CE00663B32 /* Preview Content */,
+				A927480C2A168F1600C292AD /* Localizable.strings */,
+				671082132A13A5CB00663B32 /* DynamicSource_iOSApp.swift */,
 				A92748182A16A3D200C292AD /* ViewModel */,
-				A92748172A16A3B600C292AD /* Core */,
 				A92748122A16A35800C292AD /* Model */,
 				671082432A13B13E00663B32 /* Extensions */,
 				671082402A13A76400663B32 /* Views */,
-				671082482A13C1A900663B32 /* epwa_example_incomplete.json */,
 			);
 			path = DynamicSource_iOS;
 			sourceTree = "<group>";
@@ -154,6 +159,7 @@
 			children = (
 				671082152A13A5CB00663B32 /* ContentView.swift */,
 				A92748062A166E1D00C292AD /* MapView.swift */,
+				A96CB2952A16CB5800488CDA /* AnnotationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -171,22 +177,11 @@
 		A92748122A16A35800C292AD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				671082482A13C1A900663B32 /* epwa_example_incomplete.json */,
 				A92748132A16A36C00C292AD /* LandMarkModel.swift */,
 				6710823E2A13A5F600663B32 /* ResponseModel.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		A92748172A16A3B600C292AD /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				671082172A13A5CE00663B32 /* Assets.xcassets */,
-				671082192A13A5CE00663B32 /* DynamicSource_iOS.entitlements */,
-				6710821A2A13A5CE00663B32 /* Preview Content */,
-				A927480C2A168F1600C292AD /* Localizable.strings */,
-				671082132A13A5CB00663B32 /* DynamicSource_iOSApp.swift */,
-			);
-			path = Core;
 			sourceTree = "<group>";
 		};
 		A92748182A16A3D200C292AD /* ViewModel */ = {
@@ -337,6 +332,7 @@
 				A927480F2A16908700C292AD /* Text+Extension.swift in Sources */,
 				6710823F2A13A5F600663B32 /* ResponseModel.swift in Sources */,
 				A92748142A16A36C00C292AD /* LandMarkModel.swift in Sources */,
+				A96CB2962A16CB5800488CDA /* AnnotationView.swift in Sources */,
 				671082142A13A5CB00663B32 /* DynamicSource_iOSApp.swift in Sources */,
 				671082472A13C12100663B32 /* MapViewModel.swift in Sources */,
 			);
