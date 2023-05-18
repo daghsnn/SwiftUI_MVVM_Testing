@@ -17,21 +17,25 @@ struct MapView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Map(coordinateRegion: $viewModel.coordinate,
-                    interactionModes: .all,
-                    annotationItems: viewModel.landMarks) { annotation in
-                    MapAnnotation(coordinate: annotation.coordinate) {
-                        Text(annotation.name).onTapGesture {
-                            // Modeli buraya annotationItems olarak verdikten sonra click işlemleri
-                            self.selectedAnnotate = annotation
-                            print("tiklandi")
+                if viewModel.isLoading {
+                    ProgressView(LocalizedStringKey("loading"))
+                } else {
+                    Map(coordinateRegion: $viewModel.coordinate,
+                        interactionModes: .all,
+                        annotationItems: viewModel.landMarks) { annotation in
+                        MapAnnotation(coordinate: annotation.coordinate) {
+                            Text(annotation.name).onTapGesture {
+                                // Modeli buraya annotationItems olarak verdikten sonra click işlemleri
+                                self.selectedAnnotate = annotation
+                                print("tiklandi")
+                            }
+                            Image(systemName: "airplane.departure")
+                                .resizable()
+                                .frame(width: UIScreen.WIDTH * 0.1,height: UIScreen.HEIGHT * 0.1)
+                                .foregroundColor(.yellow)
                         }
-                        Image(systemName: "airplane.departure")
-                            .resizable()
-                            .frame(width: UIScreen.WIDTH * 0.1,height: UIScreen.HEIGHT * 0.1)
-                            .foregroundColor(.yellow)
-                    }
-                }.frame(width: UIScreen.WIDTH, height: UIScreen.HEIGHT * 0.8, alignment: .bottom)
+                    }.frame(width: UIScreen.WIDTH, height: UIScreen.HEIGHT, alignment: .center)
+                }
             }.navigationBarTitle(Text(localizableKey: "flight_name"),displayMode: .automatic)
         }
     }

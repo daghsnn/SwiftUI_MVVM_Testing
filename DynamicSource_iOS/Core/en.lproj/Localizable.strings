@@ -5,4 +5,6 @@
   Created by Hasan Dag on 18.05.2023.
   
 */
-"flight_name" = "Flygscen";
+
+"flight_name" = "Flight Scene";
+"loading" = "Loading..";
