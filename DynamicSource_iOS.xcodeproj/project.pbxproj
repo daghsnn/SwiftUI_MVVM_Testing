@@ -15,11 +15,13 @@
 		671082302A13A5CE00663B32 /* DynamicSource_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6710822F2A13A5CE00663B32 /* DynamicSource_iOSUITests.swift */; };
 		671082322A13A5CE00663B32 /* DynamicSource_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671082312A13A5CE00663B32 /* DynamicSource_iOSUITestsLaunchTests.swift */; };
 		6710823F2A13A5F600663B32 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6710823E2A13A5F600663B32 /* ResponseModel.swift */; };
-		671082422A13A76D00663B32 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671082412A13A76D00663B32 /* MapView.swift */; };
 		671082452A13B14B00663B32 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671082442A13B14B00663B32 /* View+Extension.swift */; };
 		671082472A13C12100663B32 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671082462A13C12100663B32 /* MapViewModel.swift */; };
 		671082492A13C1A900663B32 /* epwa_example_incomplete.json in Resources */ = {isa = PBXBuildFile; fileRef = 671082482A13C1A900663B32 /* epwa_example_incomplete.json */; };
 		679B726B2A162E4200546F2B /* Optional+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679B726A2A162E4200546F2B /* Optional+Extension.swift */; };
+		A92748072A166E1D00C292AD /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92748062A166E1D00C292AD /* MapView.swift */; };
+		A927480A2A168F1600C292AD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A927480C2A168F1600C292AD /* Localizable.strings */; };
+		A927480F2A16908700C292AD /* Text+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A927480E2A16908700C292AD /* Text+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,11 +54,14 @@
 		6710822F2A13A5CE00663B32 /* DynamicSource_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicSource_iOSUITests.swift; sourceTree = "<group>"; };
 		671082312A13A5CE00663B32 /* DynamicSource_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicSource_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		6710823E2A13A5F600663B32 /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
-		671082412A13A76D00663B32 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		671082442A13B14B00663B32 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		671082462A13C12100663B32 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		671082482A13C1A900663B32 /* epwa_example_incomplete.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = epwa_example_incomplete.json; sourceTree = "<group>"; };
 		679B726A2A162E4200546F2B /* Optional+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extension.swift"; sourceTree = "<group>"; };
+		A92748062A166E1D00C292AD /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		A927480B2A168F1600C292AD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A927480D2A168F1800C292AD /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A927480E2A16908700C292AD /* Text+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +122,7 @@
 				6710823E2A13A5F600663B32 /* ResponseModel.swift */,
 				671082462A13C12100663B32 /* MapViewModel.swift */,
 				671082482A13C1A900663B32 /* epwa_example_incomplete.json */,
+				A927480C2A168F1600C292AD /* Localizable.strings */,
 			);
 			path = DynamicSource_iOS;
 			sourceTree = "<group>";
@@ -149,7 +155,7 @@
 		671082402A13A76400663B32 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				671082412A13A76D00663B32 /* MapView.swift */,
+				A92748062A166E1D00C292AD /* MapView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -159,6 +165,7 @@
 			children = (
 				671082442A13B14B00663B32 /* View+Extension.swift */,
 				679B726A2A162E4200546F2B /* Optional+Extension.swift */,
+				A927480E2A16908700C292AD /* Text+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -249,6 +256,7 @@
 			knownRegions = (
 				en,
 				Base,
+				sv,
 			);
 			mainGroup = 671082072A13A5CB00663B32;
 			productRefGroup = 671082112A13A5CB00663B32 /* Products */;
@@ -268,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6710821C2A13A5CE00663B32 /* Preview Assets.xcassets in Resources */,
+				A927480A2A168F1600C292AD /* Localizable.strings in Resources */,
 				671082182A13A5CE00663B32 /* Assets.xcassets in Resources */,
 				671082492A13C1A900663B32 /* epwa_example_incomplete.json in Resources */,
 			);
@@ -295,9 +304,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				671082162A13A5CB00663B32 /* ContentView.swift in Sources */,
-				671082422A13A76D00663B32 /* MapView.swift in Sources */,
+				A92748072A166E1D00C292AD /* MapView.swift in Sources */,
 				671082452A13B14B00663B32 /* View+Extension.swift in Sources */,
 				679B726B2A162E4200546F2B /* Optional+Extension.swift in Sources */,
+				A927480F2A16908700C292AD /* Text+Extension.swift in Sources */,
 				6710823F2A13A5F600663B32 /* ResponseModel.swift in Sources */,
 				671082142A13A5CB00663B32 /* DynamicSource_iOSApp.swift in Sources */,
 				671082472A13C12100663B32 /* MapViewModel.swift in Sources */,
@@ -335,6 +345,18 @@
 			targetProxy = 6710822C2A13A5CE00663B32 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A927480C2A168F1600C292AD /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A927480B2A168F1600C292AD /* en */,
+				A927480D2A168F1800C292AD /* sv */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		671082332A13A5CE00663B32 /* Debug */ = {
@@ -457,7 +479,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DynamicSource_iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = 64PMD647H2;
+				DEVELOPMENT_TEAM = N6GL6JZ5NB;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -497,7 +519,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DynamicSource_iOS/Preview Content\"";
-				DEVELOPMENT_TEAM = 64PMD647H2;
+				DEVELOPMENT_TEAM = N6GL6JZ5NB;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -535,7 +557,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 64PMD647H2;
+				DEVELOPMENT_TEAM = N6GL6JZ5NB;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MACOSX_DEPLOYMENT_TARGET = 12.5;
@@ -558,7 +580,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 64PMD647H2;
+				DEVELOPMENT_TEAM = N6GL6JZ5NB;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MACOSX_DEPLOYMENT_TARGET = 12.5;
@@ -580,7 +602,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 64PMD647H2;
+				DEVELOPMENT_TEAM = N6GL6JZ5NB;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MACOSX_DEPLOYMENT_TARGET = 12.5;
@@ -602,7 +624,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 64PMD647H2;
+				DEVELOPMENT_TEAM = N6GL6JZ5NB;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MACOSX_DEPLOYMENT_TARGET = 12.5;

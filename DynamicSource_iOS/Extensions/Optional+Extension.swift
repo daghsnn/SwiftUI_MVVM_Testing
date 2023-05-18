@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 extension Optional where Wrapped == String {
     func isOptional() -> String {
         return self ?? ""

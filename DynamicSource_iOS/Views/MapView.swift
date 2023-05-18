@@ -2,79 +2,43 @@
 //  MapView.swift
 //  DynamicSource_iOS
 //
-//  Created by Hasan Dag on 16.05.2023.
+//  Created by Hasan Dag on 18.05.2023.
 //
 
 import SwiftUI
-import MapKit
 import CoreLocation
+import MapKit
 
-protocol MapViewClickDelegate {
-    func userClicked(coordiante : CLLocationCoordinate2D)
+struct MapView: View {
+    
+    @ObservedObject var viewModel = MapViewModel()
+    @State private var selectedAnnotate : LandmarkModel?
+
+    var body: some View {
+        NavigationView {
+            VStack {
+                Map(coordinateRegion: $viewModel.coordinate,
+                    interactionModes: .all,
+                    annotationItems: viewModel.landMarks) { annotation in
+                    MapAnnotation(coordinate: annotation.coordinate) {
+                        Text(annotation.name).onTapGesture {
+                            // Modeli buraya annotationItems olarak verdikten sonra click işlemleri
+                            self.selectedAnnotate = annotation
+                            print("tiklandi")
+                        }
+                        Image(systemName: "airplane.departure")
+                            .resizable()
+                            .frame(width: UIScreen.WIDTH * 0.1,height: UIScreen.HEIGHT * 0.1)
+                            .foregroundColor(.yellow)
+                    }
+                }.frame(width: UIScreen.WIDTH, height: UIScreen.HEIGHT * 0.8, alignment: .bottom)
+            }.navigationBarTitle(Text(localizableKey: "flight_name"),displayMode: .automatic)
+        }
+    }
 }
 
-struct MapView: UIViewRepresentable {
-    
-    var coordinate: CLLocationCoordinate2D
-    
-    var onClickDelegate : MapViewClickDelegate?
-    
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
+struct MapView_Previews: PreviewProvider {
+    static var previews: some View {
+        MapView()
     }
-    
-    func makeUIView(context: Context) -> MKMapView {
-        let mapView = MKMapView()
-        mapView.delegate = context.coordinator
-        mapView.mapType = .satelliteFlyover
-        return mapView
-    }
-    
-    func updateUIView(_ view: MKMapView, context: Context) {
-        let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = coordinate
-        
-        annotation.title = "WARSAW CHOPIN"
-        DispatchQueue.main.async {
-            view.setRegion(region, animated: true)
-            view.removeAnnotations(view.annotations)
-            view.addAnnotation(annotation)
-        }
-    }
-    
-    // MARK: -Coordinator
-    class Coordinator: NSObject, MKMapViewDelegate {
-        var parent: MapView
-        
-        init(_ parent: MapView) {
-            self.parent = parent
-        }
-        
-        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-            guard annotation is MKPointAnnotation else { return nil }
-            
-            let identifier = "Annotation"
-            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-            
-            if annotationView == nil {
-                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                annotationView?.canShowCallout = true
-                let button = UIButton(type: .detailDisclosure)
-                annotationView?.rightCalloutAccessoryView = button
-            } else {
-                annotationView?.annotation = annotation
-            }
-            
-            return annotationView
-        }
-        
-        func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-            if let annotation = view.annotation as? MKPointAnnotation, let delegate = parent.onClickDelegate {
-                delegate.userClicked(coordiante: annotation.coordinate)
-            }
-        }
-    }
-    
 }
-
