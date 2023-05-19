@@ -8,3 +8,7 @@
 
 "flight_name" = "Flight Scene";
 "loading" = "Loading..";
+"error" = "Error!";
+"okey" = "OKEY";
+"pathNotFound" = "Path not found";
+"coordinatsWrong" = "No valid coordinate value found";

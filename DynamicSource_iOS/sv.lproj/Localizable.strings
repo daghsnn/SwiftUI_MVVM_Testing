@@ -7,3 +7,7 @@
 */
 "flight_name" = "Flygscen";
 "loading" = "Laddar..";
+"error" = "Fel!";
+"okey" = "OKEJ";
+"pathNotFound" = "Sökväg hittades inte";
+"coordinatsWrong" = "Inget giltigt koordinatvärde hittades";

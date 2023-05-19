@@ -9,11 +9,21 @@ import SwiftUI
 import CoreLocation
 import MapKit
 
-struct MapView: View {
+protocol MapViewProtocol {
+    var viewModel: MapViewModel { get }
+    func showAlert(withMessage message: String)
+}
+
+struct MapView: View, MapViewProtocol {
     
-    @ObservedObject var viewModel = MapViewModel()
-    @State private var width: CGFloat = 100 // State to update with Binding
+    @ObservedObject var viewModel: MapViewModel = MapViewModel()
+    
+    @State private var showAlert = false
+    @State private var errorMessage = ""
+    
+    @State private var width: CGFloat = 100
     @State private var height: CGFloat = 100
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -42,7 +52,17 @@ struct MapView: View {
                     }
                 }
             }.navigationBarTitle(Text(localizableKey: "flight_name"),displayMode: .automatic)
-            
+                .alert(isPresented: $showAlert) {
+                    Alert(
+                        title: Text(localizableKey: "error"),
+                        message: Text(errorMessage),
+                        dismissButton: .default(Text(localizableKey: "okey")) {
+                            showAlert = false
+                        })
+                }
+        }.onAppear{
+            self.viewModel.view = self
+            self.viewModel.getData()
         }
     }
     
@@ -57,6 +77,14 @@ struct MapView: View {
         
         self.width = widthInDegrees * pointsPerDegreeLongitude / 100
         self.height = heightInDegrees * pointsPerDegreeLatitude / 100
+    }
+}
+
+extension MapView {
+    func showAlert(withMessage message: String) {
+        viewModel.isLoading = false
+        errorMessage = message
+        showAlert = true
     }
 }
 
