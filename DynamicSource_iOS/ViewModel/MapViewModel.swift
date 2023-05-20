@@ -24,6 +24,8 @@ final class MapViewModel: ObservableObject, MapViewModelProtocol {
 
     @Published var isLoading = true
     
+    private var width : Double = 0
+    
     let queue = DispatchQueue(label: "concurreny", qos: .userInitiated, attributes: .concurrent)
     
     func getData(path:String = "epwa_example_incomplete") {
@@ -55,24 +57,54 @@ final class MapViewModel: ObservableObject, MapViewModelProtocol {
                 group.leave()
                 
                 group.notify(queue: self.queue) {
-                    self.configureUI(span: span, region: region, modelName: model.epwa?.name)
+                    self.configureUI(span: span, region: region, landMarks: self.configureLandmarks(region?.center ?? .init(), model: model))
                 }
             }
         }
     }
-    private func configureUI(span:MKCoordinateSpan?,region:MKCoordinateRegion?, modelName:String?) {
+    
+    private func configureUI(span:MKCoordinateSpan?,region:MKCoordinateRegion?, landMarks:[LandmarkModel]) {
         DispatchQueue.main.async {
             self.isLoading = false
             guard let span, let region else {return}
             self.span = span
             self.coordinate = .init(center: region.center, span: span)
-            self.landMarks = [LandmarkModel(coordinate: self.coordinate.center, name: modelName?.uppercased() ?? "")]
+            self.landMarks = landMarks
         }
     }
     
+    private func configureLandmarks(_ region: CLLocationCoordinate2D, model:ResponseModel) -> [LandmarkModel] {
+        var landMarks : [LandmarkModel] = []
+        if let name = model.epwa?.name?.uppercased() {
+            landMarks.append(LandmarkModel(coordinate: region, name: name))
+        }
+        
+        if let obstacles = model.epwa?.rwy?.the11?.obstacles {
+            for obstacle in obstacles {
+                let center = createCoordinate(at: region, withDistance: CLLocationDistance(Double(obstacle.distance ?? "0") ?? 0), direction: CLLocationDirection(-0.21))
+                landMarks.append(LandmarkModel(coordinate: center, name: "obstacle"))
+            }
+        }
+        
+        return landMarks
+    }
+    
+    func createCoordinate(at sourceCoordinate: CLLocationCoordinate2D, withDistance distance: CLLocationDistance, direction: CLLocationDirection) -> CLLocationCoordinate2D {
+        
+        let sourceLocation = CLLocation(latitude: sourceCoordinate.latitude, longitude: sourceCoordinate.longitude)
+        let destinationLocation = sourceLocation.coordinate.coordinateWithDegree(degree: direction, distance: distance)
+        
+        return destinationLocation
+    }
+
+    
     func generateSpan(_ width:Int) -> MKCoordinateSpan {
-        let width = Double(width)
-        return MKCoordinateSpan(latitudeDelta: width / 10000, longitudeDelta: width / 10000)
+        self.width = Double(width)
+        return MKCoordinateSpan(latitudeDelta: self.width / 10000, longitudeDelta: self.width / 10000)
+    }
+    
+    func getWidth() -> Double {
+        self.width
     }
     
     func configureCoordinates(_ longitude:String, _ latitude:String) -> MKCoordinateRegion? {

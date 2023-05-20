@@ -36,13 +36,18 @@ struct MapView: View, MapViewProtocol {
                             annotationItems: viewModel.landMarks) { annotation in
                             
                             MapAnnotation(coordinate: annotation.coordinate) {
-                                AnnotationView(annotation: annotation)
-                                    .overlay {
-                                        Rectangle()
-                                            .fill(Color.red.opacity(0.2))
-                                            .frame(width: width,height: height)
-                                            .rotationEffect(Angle(degrees: Double(110)))
-                                    }
+                                if annotation.name != "obstacle" {
+                                    AnnotationView(annotation: annotation)
+                                        .overlay {
+                                            Rectangle()
+                                                .fill(Color.red.opacity(0.2))
+                                                .frame(width: width,height: height)
+                                                .rotationEffect(Angle(degrees: Double(110)))
+                                        }
+                                } else {
+                                    AnnotationView(annotation: annotation)
+                                }
+
                             }
                         }.frame(width: UIScreen.WIDTH, height: UIScreen.HEIGHT, alignment: .center)
                             .onChange(of: viewModel.coordinate.span.longitudeDelta) { _ in
@@ -69,8 +74,8 @@ struct MapView: View, MapViewProtocol {
     func calculateWidthInPoints() {
         let metersPerDegreeLatitude = viewModel.coordinate.span.latitudeDelta * 111_111 // Approximate meters per degree latitude
         let metersPerDegreeLongitude = viewModel.coordinate.span.longitudeDelta * 111_320 // Approximate meters per degree longitude
-        let widthInDegrees = 360 / metersPerDegreeLongitude
-        let heightInDegrees = 160 / metersPerDegreeLatitude
+        let widthInDegrees = viewModel.getWidth() / metersPerDegreeLongitude
+        let heightInDegrees = viewModel.getWidth() / metersPerDegreeLatitude
         
         let pointsPerDegreeLongitude = UIScreen.WIDTH / CGFloat(viewModel.coordinate.span.longitudeDelta)
         let pointsPerDegreeLatitude = 300 / CGFloat(viewModel.coordinate.span.latitudeDelta)
