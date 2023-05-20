@@ -10,6 +10,7 @@ import MapKit
 import CoreLocation
 
 protocol MapViewModelProtocol : AnyObject {
+    var view : MapViewProtocol? {get set}
     func getData(path:String)
     func configureCoordinates(_ longitude:String, _ latitude:String) -> MKCoordinateRegion?
     func configureLandmarks(_ region: CLLocationCoordinate2D, model:ResponseModel) -> [LandmarkModel]

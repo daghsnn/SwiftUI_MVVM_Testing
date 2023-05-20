@@ -11,7 +11,6 @@
 		671082162A13A5CB00663B32 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671082152A13A5CB00663B32 /* ContentView.swift */; };
 		671082182A13A5CE00663B32 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 671082172A13A5CE00663B32 /* Assets.xcassets */; };
 		6710821C2A13A5CE00663B32 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6710821B2A13A5CE00663B32 /* Preview Assets.xcassets */; };
-		671082262A13A5CE00663B32 /* DynamicSource_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671082252A13A5CE00663B32 /* DynamicSource_iOSTests.swift */; };
 		671082302A13A5CE00663B32 /* DynamicSource_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6710822F2A13A5CE00663B32 /* DynamicSource_iOSUITests.swift */; };
 		671082322A13A5CE00663B32 /* DynamicSource_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671082312A13A5CE00663B32 /* DynamicSource_iOSUITestsLaunchTests.swift */; };
 		6710823F2A13A5F600663B32 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6710823E2A13A5F600663B32 /* ResponseModel.swift */; };
@@ -25,6 +24,8 @@
 		A92748142A16A36C00C292AD /* LandMarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92748132A16A36C00C292AD /* LandMarkModel.swift */; };
 		A96CB2962A16CB5800488CDA /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96CB2952A16CB5800488CDA /* AnnotationView.swift */; };
 		A9EB68212A18F92600D7A836 /* CLLocationCoordinate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EB68202A18F92600D7A836 /* CLLocationCoordinate+Extension.swift */; };
+		A9EB68252A1911A100D7A836 /* MapViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EB68242A1911A100D7A836 /* MapViewTest.swift */; };
+		A9EB68272A1914F800D7A836 /* MapViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EB68262A1914F800D7A836 /* MapViewModelTest.swift */; };
 		A9F1D55D2A1797F6003919E8 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F1D55C2A1797F6003919E8 /* Localization.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,7 +54,6 @@
 		671082192A13A5CE00663B32 /* DynamicSource_iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DynamicSource_iOS.entitlements; sourceTree = "<group>"; };
 		6710821B2A13A5CE00663B32 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		671082212A13A5CE00663B32 /* DynamicSource_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DynamicSource_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		671082252A13A5CE00663B32 /* DynamicSource_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicSource_iOSTests.swift; sourceTree = "<group>"; };
 		6710822B2A13A5CE00663B32 /* DynamicSource_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DynamicSource_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6710822F2A13A5CE00663B32 /* DynamicSource_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicSource_iOSUITests.swift; sourceTree = "<group>"; };
 		671082312A13A5CE00663B32 /* DynamicSource_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicSource_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -69,6 +69,8 @@
 		A92748132A16A36C00C292AD /* LandMarkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandMarkModel.swift; sourceTree = "<group>"; };
 		A96CB2952A16CB5800488CDA /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		A9EB68202A18F92600D7A836 /* CLLocationCoordinate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate+Extension.swift"; sourceTree = "<group>"; };
+		A9EB68242A1911A100D7A836 /* MapViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewTest.swift; sourceTree = "<group>"; };
+		A9EB68262A1914F800D7A836 /* MapViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModelTest.swift; sourceTree = "<group>"; };
 		A9F1D55C2A1797F6003919E8 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,7 +147,8 @@
 		671082242A13A5CE00663B32 /* DynamicSource_iOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				671082252A13A5CE00663B32 /* DynamicSource_iOSTests.swift */,
+				A9EB68242A1911A100D7A836 /* MapViewTest.swift */,
+				A9EB68262A1914F800D7A836 /* MapViewModelTest.swift */,
 			);
 			path = DynamicSource_iOSTests;
 			sourceTree = "<group>";
@@ -358,7 +361,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				671082262A13A5CE00663B32 /* DynamicSource_iOSTests.swift in Sources */,
+				A9EB68252A1911A100D7A836 /* MapViewTest.swift in Sources */,
+				A9EB68272A1914F800D7A836 /* MapViewModelTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

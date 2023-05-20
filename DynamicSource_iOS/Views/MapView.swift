@@ -10,7 +10,7 @@ import CoreLocation
 import MapKit
 
 protocol MapViewProtocol {
-    var viewModel: MapViewModel { get }
+    var viewModel: MapViewModel { get set }
     func showAlert(withMessage message: String)
 }
 

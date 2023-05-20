@@ -27,15 +27,6 @@ struct ContentView: View {
     }
 }
 
-struct SecondView: View {
-    var body: some View {
-        VStack {
-            Text("İkinci Ekran")
-        }
-        .navigationBarTitle("İkinci Ekran")
-    }
-}
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
