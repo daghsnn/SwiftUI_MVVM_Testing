@@ -12,6 +12,9 @@ import CoreLocation
 protocol MapViewModelProtocol : AnyObject {
     func getData(path:String)
     func configureCoordinates(_ longitude:String, _ latitude:String) -> MKCoordinateRegion?
+    func configureLandmarks(_ region: CLLocationCoordinate2D, model:ResponseModel) -> [LandmarkModel]
+    func generateSpan(_ width:Int) -> MKCoordinateSpan
+    func getWidth() -> Double
 }
 
 final class MapViewModel: ObservableObject, MapViewModelProtocol {
@@ -73,16 +76,21 @@ final class MapViewModel: ObservableObject, MapViewModelProtocol {
         }
     }
     
-    private func configureLandmarks(_ region: CLLocationCoordinate2D, model:ResponseModel) -> [LandmarkModel] {
+    func configureLandmarks(_ region: CLLocationCoordinate2D, model:ResponseModel) -> [LandmarkModel] {
         var landMarks : [LandmarkModel] = []
         if let name = model.epwa?.name?.uppercased() {
             landMarks.append(LandmarkModel(coordinate: region, name: name))
         }
         
+        let slope = Double(model.epwa?.rwy?.the11?.slope ?? "0") ?? 0
+        
         if let obstacles = model.epwa?.rwy?.the11?.obstacles {
             for obstacle in obstacles {
-                let center = createCoordinate(at: region, withDistance: CLLocationDistance(Double(obstacle.distance ?? "0") ?? 0), direction: CLLocationDirection(-0.21))
-                landMarks.append(LandmarkModel(coordinate: center, name: "obstacle"))
+                if let distance = Double(obstacle.distance ?? "0") {
+                    // I divided by 1000 because JSON's units not clear If I dont divide obstacles are so away from the poland and that Case Study about a airport rwy 11 so I notice the obstacles might be near on the RWY 11
+                    let center = createCoordinate(at: region, withDistance: CLLocationDistance(distance / 1000), direction: CLLocationDirection(slope))
+                    landMarks.append(LandmarkModel(coordinate: center, name: "obstacle"))
+                }
             }
         }
         
@@ -108,6 +116,9 @@ final class MapViewModel: ObservableObject, MapViewModelProtocol {
     }
     
     func configureCoordinates(_ longitude:String, _ latitude:String) -> MKCoordinateRegion? {
+        let isLatitudeNegative = latitude.hasSuffix("S")
+        let isLongitudeNegative = longitude.hasSuffix("W")
+
         let longitudeTrimmedString = longitude.dropLast()
         let latitudeTrimmedString = latitude.dropLast()
 
@@ -115,7 +126,10 @@ final class MapViewModel: ObservableObject, MapViewModelProtocol {
         let latitudeLeadingZeros = latitudeTrimmedString.trimmingCharacters(in: ["0"])
 
         if let longitudeValue = Float(longitudeLeadingZeros), let latituteValue = Float(latitudeLeadingZeros) {
-            let center = CLLocationCoordinate2D(latitude: CLLocationDegrees(latituteValue / 10000), longitude: CLLocationDegrees(longitudeValue / 10000))
+            let finalLatitude = isLatitudeNegative ? -latituteValue : latituteValue
+            let finalLongitude = isLongitudeNegative ? -longitudeValue : longitudeValue
+
+            let center = CLLocationCoordinate2D(latitude: CLLocationDegrees(finalLatitude / 10000), longitude: CLLocationDegrees(finalLongitude / 10000))
             return MKCoordinateRegion(center: center, span: span)
         } else {
             view?.showAlert(withMessage: LocalizeTexts.makeLocalize(.coordinatsWrong))

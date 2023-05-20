@@ -20,12 +20,16 @@ struct AnnotationView: View {
             if annotation.name != "obstacle" {
                 VStack(spacing: 8) {
                     Text(annotation.name).font(.title)
+                    Image(systemName: "circle.dashed")
+                        .resizable()
+                        .frame(width: UIScreen.WIDTH * 0.1,height: UIScreen.HEIGHT * 0.1)
+                        .foregroundColor(.yellow.opacity(0.25))
                 }
             } else {
                 Text(annotation.name).font(.title)
                 Image(systemName: "airport.extreme.tower")
                     .resizable()
-                    .frame(width: UIScreen.WIDTH * 0.1,height: UIScreen.HEIGHT * 0.1)
+                    .frame(width: UIScreen.WIDTH * 0.05,height: UIScreen.HEIGHT * 0.05)
                     .foregroundColor(.yellow)
             }
         }
