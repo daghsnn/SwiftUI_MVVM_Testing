@@ -13,7 +13,6 @@ protocol MapViewModelProtocol : AnyObject {
     var view : MapViewProtocol? {get set}
     func getData(path:String)
     func configureCoordinates(_ longitude:String, _ latitude:String) -> MKCoordinateRegion?
-    func configureLandmarks(_ region: CLLocationCoordinate2D, model:ResponseModel) -> [LandmarkModel]
     func generateSpan(_ width:Int) -> MKCoordinateSpan
     func getWidth() -> Double
 }
@@ -77,7 +76,7 @@ final class MapViewModel: ObservableObject, MapViewModelProtocol {
         }
     }
     
-    func configureLandmarks(_ region: CLLocationCoordinate2D, model:ResponseModel) -> [LandmarkModel] {
+    private func configureLandmarks(_ region: CLLocationCoordinate2D, model:ResponseModel) -> [LandmarkModel] {
         var landMarks : [LandmarkModel] = []
         if let name = model.epwa?.name?.uppercased() {
             landMarks.append(LandmarkModel(coordinate: region, name: name))

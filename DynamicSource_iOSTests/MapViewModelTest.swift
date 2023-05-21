@@ -153,21 +153,6 @@ class MapViewModelSPY : MapViewModelProtocol {
         return stubbedConfigureCoordinatesResult
     }
 
-    var invokedConfigureLandmarks = false
-    var invokedConfigureLandmarksCount = 0
-    var invokedConfigureLandmarksParameters: (region: CLLocationCoordinate2D, model: ResponseModel)?
-    var invokedConfigureLandmarksParametersList = [(region: CLLocationCoordinate2D, model: ResponseModel)]()
-    var stubbedConfigureLandmarksResult: [LandmarkModel]! = []
-    
-    @discardableResult
-    func configureLandmarks(_ region: CLLocationCoordinate2D, model:ResponseModel) -> [LandmarkModel] {
-        invokedConfigureLandmarks = true
-        invokedConfigureLandmarksCount += 1
-        invokedConfigureLandmarksParameters = (region, model)
-        invokedConfigureLandmarksParametersList.append((region, model))
-        return stubbedConfigureLandmarksResult
-    }
-
     var invokedGenerateSpan = false
     var invokedGenerateSpanParameters: (width: Int, Void)?
     
